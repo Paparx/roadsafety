@@ -27,13 +27,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["campusxmart.up.railway.app",'127.0.0.1']
+ALLOWED_HOSTS = ["roadsafety.up.railway.app",'127.0.0.1']
 
-CSRF_TRUSTED_ORIGINS = ["https://campusxmart.up.railway.app",
+CSRF_TRUSTED_ORIGINS = ["https://roadsafety.up.railway.app",
                         "http://127.0.0.1"]
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
