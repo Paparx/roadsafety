@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ["roadsafety.up.railway.app",'127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = ["https://roadsafety.up.railway.app",
                         "http://127.0.0.1"]
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
