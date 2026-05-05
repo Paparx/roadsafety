@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<div class="flex justify-center items-center min-h-screen px-4 pt-24 pb-16">
+
+  <div class="bg-white p-6 w-full max-w-md rounded-xl shadow-lg ">
+
+    <!-- TABS -->
+    <div class="flex text-center border-b mb-4">
+      <div class="w-1/2 font-bold text-[#535b91] border-b-2 border-[#535b91] py-3">
+        Login
+      </div>
+      <div class="w-1/2 py-3">
+        <a href="{% url 'signup' %}" class="text-gray-700 hover:text-[#535b91]">
+          Sign Up
+        </a>
+      </div>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <form method="POST">
+      {% csrf_token %}
+
+      <h4 class="mb-2 font-semibold">Welcome Back</h4>
+      <p class="text-muted mb-4">Access your safety dashboard</p>
+
+      <!-- ERROR MESSAGE -->
+      {% if error %}
+      <div class="bg-red-100 text-red-700 px-3 py-2 rounded mb-3">
+        {{ error }}
+      </div>
+      {% endif %}
+
+    <input type="email" name="email"
+      class="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7981B9]"
+      placeholder="Email" required>
+
+    <input type="password" name="password"
+      class="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7981B9]"
+      placeholder="Password" required>
+
+      <div class="flex justify-between items-center mb-3 text-sm">
+      <label class="flex items-center gap-2">
+        <input type="checkbox">
+        Remember me
+      </label>
+      <a href="#" class="text-[#535b91] hover:underline">Forgot password?</a>
+    </div>
+
+    <button type="submit"
+      class="w-full py-2 text-white rounded-lg bg-[#7981B9] hover:bg-[#6a70a8] transition focus:outline-none focus:ring-2 focus:ring-[#7981B9]">
+      Sign In
+    </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

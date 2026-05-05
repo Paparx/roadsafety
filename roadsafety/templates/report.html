@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Submit Report{% endblock %}
+
+{% block content %}
+
+<div class="container py-5 mt-16">
+
+<!-- HEADER -->
+<div class="text-center mb-5">
+<h1 class="text-4xl font-bold text-[#7981B9]">Submit Report</h1>
+<p class="text-[#7981B9]">Provide accurate details to improve road safety</p>
+</div>
+
+<div class="bg-[#ECE6E6] rounded-3xl shadow-lg overflow-hidden">
+<div class="row g-0 h-100">
+
+<!-- LEFT PANEL -->
+<div class="lg:w-1/3 w-full flex">
+<div class="bg-[#7981B9] text-white p-10 w-100 flex flex-col justify-center">
+
+<h3 class="mb-4">Incident Guide</h3>
+
+<div class="mb-4">
+<h6 class="font-bold">Precise Location</h6>
+<p class="text-sm opacity-80">Provide landmarks or exact details.</p>
+</div>
+
+<div class="mb-4">
+<h6 class="font-bold">Incident Details</h6>
+<p class="text-sm opacity-80">Describe what happened and any risks involved.</p>
+</div>
+
+<div>
+<h6 class="font-bold">Secure Logs</h6>
+<p class="text-sm opacity-80">Your data is safely recorded.</p>
+</div>
+
+</div>
+</div>
+
+<!-- FORM -->
+<div class="lg:w-2/3 w-full p-6 md:p-10">
+
+<form method="POST">
+{% csrf_token %}
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+<label>Location</label>
+<input type="text" name="location" class="form-control rounded-lg" placeholder="Enter location" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Type</label>
+<select name="type" class="form-select rounded-lg">
+<option>Vehicle Collision</option>
+<option>Pedestrian Incident</option>
+<option>Road Damage</option>
+</select>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Date & Time</label>
+<input type="datetime-local" name="datetime" class="form-control rounded-lg">
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Severity</label>
+<select name="severity" class="form-select rounded-lg">
+<option>Low</option>
+<option>Medium</option>
+<option>High</option>
+</select>
+</div>
+
+</div>
+
+<div class="mb-3">
+<label>Description</label>
+<textarea name="description" class="form-control rounded-lg" rows="4"></textarea>
+</div>
+
+<div class="d-flex justify-content-between mt-4">
+<a href="{% url 'home' %}" class="btn btn-outline-secondary rounded-lg">Cancel</a>
+
+<button type="submit" class="btn text-white rounded-lg" style="background:#7981B9;">
+Submit Report
+</button>
+</div>
+
+</form>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+{% endblock %}

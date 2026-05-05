@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Accident Hotspots{% endblock %}
+
+{% block content %}
+
+
+<div class="max-w-7xl mx-auto px-4 pt-28 md:pt-24 pb-10">
+
+<div class="grid lg:grid-cols-[1fr_2fr] gap-6 items-stretch">
+
+<!-- LEFT PANEL -->
+<div>
+
+
+<div class="sticky top-24">
+
+
+<div class="glass p-4 mb-3 rounded-xl shadow-sm">
+  
+  <input type="text" id="searchInput"
+    class="w-full mb-2 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7981B9]"
+    placeholder="Search location...">
+
+  <div class="flex gap-2">
+    <button id="searchBtn"
+      class="w-full bg-[#7981B9] text-white py-2 rounded-lg hover:bg-[#6a70a8] transition">
+      Search
+    </button>
+
+    <button id="locBtn"
+      class="w-full border border-[#7981B9] text-[#7981B9] py-2 rounded-lg hover:bg-[#7981B9] hover:text-white transition">
+      My Location
+    </button>
+  </div>
+
+</div>
+
+<div class="glass p-4 rounded-xl shadow-sm">
+  <h5 class="mb-3 font-semibold">Hotspots</h5>
+
+
+  <div id="results" class="max-h-[300px] overflow-y-auto"></div>
+</div>
+
+</div>
+</div>
+
+<!-- MAP -->
+<div class="h-full">
+  <div id="map" class="h-full"></div>
+</div>
+
+</div>
+</div>
+
+<style>
+
+
+#map {
+    width: 100%;
+    height: 500px;   
+    border-radius: 20px;
+}
+
+
+.glass {
+    background: rgba(236, 230, 230, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0,0,0,0.05); 
+}
+
+
+.result-item {
+    padding: 10px;
+    border-radius: 12px;
+    background: white;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.result-item:hover {
+    background: #f3f4f6;
+}
+
+/* severity colors */
+.badge-low { color: green; }
+.badge-medium { color: #eab308; }
+.badge-high { color: red; }
+
+</style>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/map.js' %}"></script>
+{% endblock %}

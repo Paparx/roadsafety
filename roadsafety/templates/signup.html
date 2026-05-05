@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Create Account{% endblock %}
+
+{% block content %}
+
+<div class="flex justify-center items-center min-h-screen px-4 pt-24 pb-16">
+
+  <div class="bg-white p-4 w-full max-w-md rounded-xl shadow">
+
+    <!-- TABS -->
+    <div class="d-flex text-center border-bottom mb-4">
+      <div class="w-50 py-3">
+        <a href="{% url 'login' %}" class="text-dark text-decoration-none">Login</a>
+      </div>
+      <div class="w-50 font-bold text-[#535b91] border-b-2 border-[#535b91] py-3">
+        Sign Up
+      </div>
+    </div>
+
+    <!-- SIGNUP FORM -->
+    <form method="POST">
+      {% csrf_token %}
+
+      <h4 class="mb-2 font-semibold">Create Account</h4>
+      <p class="text-muted mb-4">Join the safety network</p>
+
+      <input type="email" name="email" class="form-control mb-3 rounded-lg" placeholder="Email" required>
+
+      <input type="password" name="password" class="form-control mb-3 rounded-lg" placeholder="Password" required>
+
+      <select name="role" class="form-control mb-3 rounded-lg">
+        <option value="Viewer">Viewer</option>
+        <option value="Reporter">Reporter</option>
+      </select>
+
+      <button type="submit" class="btn w-100 py-2 text-white rounded-lg" style="background:#7981B9;">
+        Sign Up
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

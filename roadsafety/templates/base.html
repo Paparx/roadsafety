@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{% block title %}Accitrack{% endblock %}</title>
+
+<!-- Bootstrap-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<style>
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+</style>
+
+</head>
+
+<body class="bg-white">
+
+<!--NAVBAR-->
+<nav class="bg-[#7981B9] py-0.5 relative">
+<div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
+
+<!-- LOGO -->
+<a href="{% url 'home' %}">
+<img src="{% static 'assets/images/logo.png' %}" class="h-[40px] md:h-[45px]">
+</a>
+
+
+<button id="menuBtn" class="md:hidden text-white text-2xl">
+☰
+</button>
+
+<!-- MENU -->
+<div id="menu"
+     class="hidden md:flex flex-col md:flex-row md:items-center md:space-x-6
+            absolute md:static top-full left-0 w-full md:w-auto
+            bg-[#7981B9] md:bg-transparent
+            p-4 md:p-0 z-50
+            space-y-3 md:space-y-0 text-center md:text-left">
+
+<a class="block text-white font-semibold py-2 md:py-0" href="{% url 'home' %}">Home</a>
+<a class="block text-white font-semibold py-2 md:py-0" href="{% url 'accident_hotspot' %}">Accident Hotspots</a>
+<a class="block text-white font-semibold py-2 md:py-0" href="{% url 'report' %}">Report Accident</a>
+
+{% if request.session.logged_in %}
+
+<div class="flex flex-col md:flex-row md:items-center md:gap-4 space-y-2 md:space-y-0">
+
+<a class="block text-white font-semibold" href="{% url 'profile' %}">
+Profile
+</a>
+
+<a href="{% url 'logout' %}"
+   class="block border border-white text-white px-3 py-1 rounded-lg text-center
+          hover:bg-white hover:text-[#7981B9] transition">
+Logout
+</a>
+
+</div>
+
+{% else %}
+
+<a href="{% url 'login' %}"
+   class="block border border-white text-white px-3 py-2 rounded-lg text-center">
+Login
+</a>
+
+<a href="{% url 'signup' %}"
+   class="block border border-white text-white px-3 py-2 rounded-lg text-center">
+Sign Up
+</a>
+
+{% endif %}
+
+</div>
+</div>
+</nav>
+
+
+
+
+{% block content %}{% endblock %}
+
+
+<!--FOOTER-->
+<footer class="bg-[#7981B9] mt-10">
+<div class="max-w-7xl mx-auto py-6 px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+
+<span class="text-white font-semibold mb-2 md:mb-0">
+Accitrack © 2026
+</span>
+
+<div class="flex items-center gap-3">
+<a href="{% url 'privacy' %}" class="text-white hover:underline">Privacy</a>
+<span class="text-white">|</span>
+<a href="{% url 'terms' %}" class="text-white hover:underline">Terms</a>
+</div>
+
+</div>
+</footer>
+
+
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("menuBtn");
+    const menu = document.getElementById("menu");
+
+    btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+    });
+});
+</script>
+
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

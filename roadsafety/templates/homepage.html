@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="max-w-7xl mx-auto px-4 py-6 pb-10">
+<div class="grid lg:grid-cols-2 gap-6 items-center">
+
+<div>
+<h1 class="text-3xl lg:text-5xl text-[#5f6599]">
+Accitrack: Safer Roads for Every Journey
+</h1>
+
+<p class="mt-3">
+A real-time safety network connecting commuters with data-driven insights to prevent accidents and save lives.
+</p>
+
+<div class="mt-4">
+<a href="{% url 'report' %}" class="bg-[#7981B9] text-white px-4 py-2 rounded-lg mr-2 inline-block">
+Report Accident
+</a>
+
+<a href="{% url 'accident_hotspot' %}" class="border border-[#7981B9] text-[#7981B9] px-4 py-2 rounded-lg inline-block">
+Explore Map
+</a>
+</div>
+</div>
+
+<div>
+<div class="bg-[#9096ca] p-3 md:p-5 rounded-2xl">
+<img src="{% static 'assets/images/road_images.jpg' %}" alt="Road safety illustration" class="w-full h-[200px] md:h-[350px] object-cover rounded-xl">
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- FEATURES -->
+<section class="bg-[#f5f1f1] py-10 px-4">
+<div class="max-w-7xl mx-auto text-center">
+<div class="grid md:grid-cols-3 gap-6">
+
+<div>
+<div class="text-[#7981B9] text-xl">1</div>
+<h6 class="mt-2 font-semibold">Real-time Alerts</h6>
+<p>Instant notifications for hazards</p>
+</div>
+
+<div>
+<div class="text-[#7981B9] text-xl">2</div>
+<h6 class="mt-2 font-semibold">Verified Data</h6>
+<p>Cross-referenced reliable info</p>
+</div>
+
+<div>
+<div class="text-[#7981B9] text-xl">3</div>
+<h6 class="mt-2 font-semibold">Community Driven</h6>
+<p>Powered by community contributions</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- SAFETY -->
+<section class="bg-[#7981B9] py-16 px-4">
+<div class="max-w-7xl mx-auto">
+<h3 class="text-white font-bold text-xl">Safety Features</h3>
+
+<div class="grid md:grid-cols-3 gap-6 mt-6">
+
+<div class="bg-[#f9f9f9] p-6 rounded-xl">
+<h6 class="font-semibold">Smart Analytics</h6>
+<p>Predicts high-risk times and locations before incidents occur.</p>
+</div>
+
+<div class="bg-[#f9f9f9] p-6 rounded-xl">
+<h6 class="font-semibold">Interactive Map</h6>
+<p>Explore hotspots with detailed layers of historical data.</p>
+</div>
+
+<div class="bg-[#f9f9f9] p-6 rounded-xl">
+<h6 class="font-semibold">Emergency Contacts</h6>
+<p>One-tap access to local authorities and emergency services.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section class="bg-[#f5f1f1] py-16 px-4">
+<div class="max-w-7xl mx-auto text-center">
+<h3 class="text-xl font-semibold">How It Works</h3>
+
+<div class="grid md:grid-cols-3 gap-6 mt-6">
+
+<div class="bg-white p-6 rounded-xl">
+<div class="bg-[#7981B9] text-white w-12 h-12 mx-auto flex items-center justify-center rounded-lg">01</div>
+<h6 class="mt-3 font-semibold">Spot an accident</h6>
+<p>Identify hazards safely</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl">
+<div class="bg-[#7981B9] text-white w-12 h-12 mx-auto flex items-center justify-center rounded-lg">02</div>
+<h6 class="mt-3 font-semibold">Fill report form</h6>
+<p>Provide details quickly</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl">
+<div class="bg-[#7981B9] text-white w-12 h-12 mx-auto flex items-center justify-center rounded-lg">03</div>
+<h6 class="mt-3 font-semibold">Help community</h6>
+<p>Warn others instantly</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="max-w-7xl mx-auto px-4">
+<div class="bg-gradient-to-r from-[#7981B9] to-[#6a70a8] text-white py-16 px-6 rounded-3xl text-center my-10">
+
+<h2 class="font-bold text-2xl">
+    {% if logged_in %}
+        Thank you for helping make roads safer. Your contribution matters 
+    {% else %}
+        Join the mission for safer roads
+    {% endif %}
+</h2>
+
+<p class="mt-3 mb-4">
+    Together, we can reduce road fatalities and create a smarter, more responsive safety network.
+</p>
+
+{% if not logged_in %}
+<a href="{% url 'signup' %}" 
+   class="bg-white text-[#7981B9] px-4 py-2 rounded-lg mt-3 inline-block">
+    Sign Up Now
+</a>
+{% endif %}
+
+</div>
+</section>
+
+{% endblock %}
